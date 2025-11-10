@@ -1,0 +1,19 @@
+# 게임 환경 설정 (해상도, 색상, 타이머 등 상수 모음)
+BOARD_W, BOARD_H = 17, 10 
+CELL = 48
+MARGIN = 10
+SIDE_W = 160
+WIDTH = BOARD_W * CELL + MARGIN * 2 + SIDE_W
+HEIGHT = BOARD_H * CELL + MARGIN * 2
+FPS = 60
+GAME_TIME = 100 # 게임시간
+
+# 색상
+BG = (230, 245, 235)
+GRID = (240, 255, 245)
+RED = (230, 60, 50)
+TEXT = (30, 50, 40)
+SELECT = (255, 180, 130)
+BUTTON = (200, 230, 200)
+BUTTON_HOVER = (170, 210, 170)
+
