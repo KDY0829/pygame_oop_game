@@ -37,4 +37,20 @@ class Board:
         gx = (px - self.rect.x) // CELL
         gy = (py - self.rect.y) // CELL
         return int(gx), int(gy)
-        
+    
+    # 격자 좌표 > 화면 rect 변환
+    def cell_rect(self, gx, gy):
+        return pygame.Rect(self.rect.x + gx*CELL, self.rext.y + gy*CELL, CELL, CELL)
+    
+    # 보드 전체
+    def draw(self, surf):
+        pygame.draw.rect(surf, GRID, self.rect)
+        for y in range(BOARD_H):
+            for x in range(BOARD_W):
+                r = self.cell_rect(x, y)
+                pygame.draw.rect(surf, (210, 230, 210), r, 1, border_radius=6)
+                item = self.grid[y][x]
+                if item:
+                    item.draw(surf, r)
+                else:
+                    pygame.draw.rect(surf, (240, 240, 240), r, border_radius=6)
