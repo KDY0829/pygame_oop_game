@@ -11,6 +11,12 @@ class Board:
         self.grid = [[None for _ in range(BOARD_W)] for _ in range(BOARD_H)]
 
         self.apple_img = self._load_apple_img()
+        self._ensure_filled()
+
+    def _ensure_filled(self):
+        filled = sum(1 for row in self.grid for c in row if c is not None)
+        if filled == 0:
+            self.fill_board()
 
     def _load_apple_img(self):
         path = os.path.join('./images/apple.png')
@@ -40,7 +46,7 @@ class Board:
     
     # 격자 좌표 > 화면 rect 변환
     def cell_rect(self, gx, gy):
-        return pygame.Rect(self.rect.x + gx*CELL, self.rext.y + gy*CELL, CELL, CELL)
+        return pygame.Rect(self.rect.x + gx*CELL, self.rect.y + gy*CELL, CELL, CELL)
     
     # 보드 전체
     def draw(self, surf):
@@ -48,9 +54,34 @@ class Board:
         for y in range(BOARD_H):
             for x in range(BOARD_W):
                 r = self.cell_rect(x, y)
-                pygame.draw.rect(surf, (210, 230, 210), r, 1, border_radius=6)
-                item = self.grid[y][x]
-                if item:
-                    item.draw(surf, r)
+                pygame.draw.rect(surf, (235, 240, 235), r, 0, border_radius=6)
+                pygame.draw.rect(surf, (190, 210, 190), r, 1, border_radius=6)
+                it = self.grid[y][x]
+                if it:
+                    it.draw(surf, r)
                 else:
-                    pygame.draw.rect(surf, (240, 240, 240), r, border_radius=6)
+                    pygame.draw.rect(surf, (245, 245, 245), r, 0, border_radius=6)
+
+
+    # 선택된 숫자들의 총합이 10이면 제거
+    def remove_if_sum10(self, cells):
+        items = [self.grid[y][x] for (x, y) in cells if self._valid_xy(x, y) and self.grid[y][x] and not self.grid[y][x].removed]
+        total = sum(i.value for i in items)
+
+        if total == 10 and items:
+            for (x, y) in cells:
+                self.grid[y][x] = None
+            return len(items)
+        return 0
+    
+    # 드래그 종료 시 하이라이트 해제
+    def clear_highlights(self):
+        for row in self.grid:
+            for it in row:
+                if it:
+                    it.highlight = False
+
+    def _valid_xy(self, x, y):
+        return 0 <= x < BOARD_W and 0 <= y < BOARD_H
+    
+

@@ -3,17 +3,14 @@ from config import RED, TEXT, SELECT, CELL
 
 # pygame.font.SysFont()는 호출할 때마다 새 폰트 객체를 만듭니다.
 # 매번 만들면 성능이 떨어지므로, 한 번만 생성 후 재사용하기 위해 캐싱
+BLACK = (0, 0, 0)
+_num_font = None
 
-num_font = None
-
-# 내부 전용 폰트 생성 함수
 def _font():
-    global num_font
-
-    if num_font is None:
-        num_font = pygame.font.SysFont('malgungothic', 22)
-
-    return num_font
+    global _num_font
+    if _num_font is None:
+        _num_font = pygame.font.Font(None, 24)
+    return _num_font
 
 # 보드의 한 칸(사과 셀)을 표현하는 클래스
 class Item:
@@ -42,7 +39,7 @@ class Item:
             pygame.draw.circle(surf, color, rect.center, CELL // 2 - 5)
 
         # 숫자
-        num = _font().render(str(self.value), True, TEXT)
+        num = _font().render(str(self.value), True, BLACK)
         surf.blit(num, num.get_rect(center=rect.center))
 
         if self.highlight and self.apple_img:
