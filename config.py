@@ -19,4 +19,9 @@ BUTTON_HOVER = (170, 210, 170)
 DRAG_FILL = (120, 200, 160, 60)   # (R, G, B, A)
 DRAG_BORDER = (40, 120, 90)
 
+# 배경음
 BGM_PATH = "music/candy_theme.mp3"
+
+# 효과음
+SFX_REMOVE_PATH = "sounds/chew_crunch.wav"
+SFX_REMOVE_VOLUME = 0.7

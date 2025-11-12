@@ -1,8 +1,6 @@
 import pygame
 from config import RED, TEXT, SELECT, CELL
 
-# pygame.font.SysFont()는 호출할 때마다 새 폰트 객체를 만듭니다.
-# 매번 만들면 성능이 떨어지므로, 한 번만 생성 후 재사용하기 위해 캐싱
 BLACK = (0, 0, 0)
 _num_font = None
 
