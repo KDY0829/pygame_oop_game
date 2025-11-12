@@ -57,7 +57,7 @@ MINIGAME/
 ├─ game.py
 ├─ main.py
 └─ requirements.txt
-
+```
 ---
 
 ## ⚙️ 실행 방법
