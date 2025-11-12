@@ -62,7 +62,7 @@ MINIGAME/
 
 ## ⚙️ 실행 방법
 
-pip install -r requirements.txt
+1. pip install -r requirements.txt
 
-- 게임 실행
-  python main.py
+2. 게임 실행
+  - python main.py
