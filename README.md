@@ -40,7 +40,7 @@
 ---
 
 ## 🧱 파일 구조
-
+'''
 MINIGAME/
 ├─ images/
 │ └─ apple.png
@@ -56,7 +56,7 @@ MINIGAME/
 ├─ game.py
 ├─ main.py
 └─ requirements.txt
-
+'''
 ## ⚙️ 실행 방법
 
 pip install -r requirements.txt
