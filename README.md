@@ -41,13 +41,14 @@
 
 ## 📁 파일 구조
 
+```text
 MINIGAME/
 ├─ images/
-│ └─ apple.png
+│  └─ apple.png
 ├─ sounds/
-│ └─ chew_crunch.wav
+│  └─ chew_crunch.wav
 ├─ music/
-│ └─ candy_theme.mp3
+│  └─ candy_theme.mp3
 ├─ background.py
 ├─ board.py
 ├─ player.py
